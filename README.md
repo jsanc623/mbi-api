@@ -14,4 +14,8 @@ The project utilizes pytest for its unit testing.
 I have included a Postman collection for live testing of the API. This collection
 tests the verify endpoint, generate endpoint, as well as a combination of the two (generate then verify).
 
-Lastly, 
+# Deployment
+
+The API is permanently deployed at https://mbi-api.juanleonardosanchez.com/
+
+It can be deployed locally using the included `start.sh` which simply runs docker based on the provided Dockerfile.
