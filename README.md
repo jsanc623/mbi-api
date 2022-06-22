@@ -19,3 +19,14 @@ tests the verify endpoint, generate endpoint, as well as a combination of the tw
 The API is permanently deployed at https://mbi-api.juanleonardosanchez.com/
 
 It can be deployed locally using the included `start.sh` which simply runs docker based on the provided Dockerfile.
+
+# Local Setup (No Docker)
+
+```bash
+sudo apt install python3-venv
+python3 -m venv virtualenv
+source virtualenv/bin/activate
+pip install wheel uwsgi flask
+sudo ufw allow 5000
+python app.py
+```
