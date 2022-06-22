@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  description: "MBI API"
+  version: "1.0.0"
+  title: "MBI API"
+host: "mbi-api.juanleonardosanchez.com"
+basePath: "/"
+schemes:
+  - "http"
+paths:
+  /verify:
+    post:
+      summary: "Verify an MBI"
+      description: "Accepts an MBI and returns true if valid and false if it is invalid"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      produces:
+        - "application/json"
+      parameters:
+        - in: formData
+          name: mbi
+          type: string
+          description: "The MBI to verify"
+          allowEmptyValue: true
+      responses:
+        "200":
+          description: "OK"
+  /generate:
+    get:
+      summary: "Generate an MBI"
+      description: "Generates an MBI and returns it"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "OK"
