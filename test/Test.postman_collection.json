@@ -11,11 +11,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/generate",
+					"raw": "{{url}}/generate",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "5000",
 					"path": [
 						"generate"
 					]
@@ -34,22 +33,21 @@
 						{
 							"key": "mbi",
 							"value": "5dh4wn0fc40",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "mbi",
 							"value": "2zv7kr8gm17",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/verify",
+					"raw": "{{url}}/verify",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "5000",
 					"path": [
 						"verify"
 					]
@@ -64,8 +62,10 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.sendRequest(\"http://localhost:5000/generate\", function (err, response) {\r",
+							"pm.sendRequest(\"{{url}}/generate\", function (err, response) {\r",
+							"    console.log(response)\r",
 							"    let r = response.json()\r",
+							"    console.log(r)\r",
 							"    pm.collectionVariables.set(\"generated_mbi\", r.mbi);\r",
 							"});"
 						],
@@ -87,11 +87,10 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/verify",
+					"raw": "{{url}}/verify",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "5000",
 					"path": [
 						"verify"
 					]
@@ -100,10 +99,34 @@
 			"response": []
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "generated_mbi",
 			"value": ""
+		},
+		{
+			"key": "url",
+			"value": "https://mbi-api.juanleonardosanchez.com"
 		}
 	]
 }
