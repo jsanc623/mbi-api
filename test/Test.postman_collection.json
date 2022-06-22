@@ -62,10 +62,8 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.sendRequest(\"{{url}}/generate\", function (err, response) {\r",
-							"    console.log(response)\r",
+							"pm.sendRequest(pm.collectionVariables.get(\"url\")+\"/generate\", function (err, response) {\r",
 							"    let r = response.json()\r",
-							"    console.log(r)\r",
 							"    pm.collectionVariables.set(\"generated_mbi\", r.mbi);\r",
 							"});"
 						],
